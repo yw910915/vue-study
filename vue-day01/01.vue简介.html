@@ -30,8 +30,82 @@
     2.引入vue.js后,全局作用域中就有一个vue的构造函数,通过此函数常见vue实例
     新创建出来的实例对象,就是MVVM中的vm层
     
+    VSCode编写Vue的插件
+     1.Vetur
+     2.Vue 2 Snippets
 
+    Vue的指令
+        在vue中,只要是以 v- 开头的属性,都是指令
+    
+    差值表达式
+    同art-template , 将data中的数据渲染到{{}}中,{{}}内部写的是表达式(可以写js代码的地方)
+    {{test}}
 
+    注意:在vue中差值表达式只能用于元素内部文本的渲染,不能用于属性渲染
+
+    v-text
+    将表达式的结果渲染到标签的innerText属性上
+
+    后面的内容会拼接到test数据后面
+    <P>{{test}}后面的内容</P>
+
+    后面的内容会被覆盖,等同于p.innerText=test
+    <p v-text="test">后面的内容</p>
+
+    v-html
+    用法同v-text,区别在于v-html可以解析带HTML标签的解构,v-text会将HTML解析成纯文本惊醒渲染
+    <p v-html="test"></p>
+
+    v-bind
+    Vue中提供用于属性绑定的指令
+    <input type="text" v-bind:value="val+'aaa'">
+    由于v-bind太长了,所以vue提供了简写:
+
+    v-bind支持费标准属性的绑定
+    <input type="text" :aaa="val" :value="val+'aaa'">
+
+    v-on
+    vue中提供用于事件绑定的指令
+    <input type="text" id="inp" :value="msg" v-on:keyup="keydownHandler">
+
+    data与methods的代码:
+    data:{
+        msg:"nihao"
+    },
+    methods:{
+
+    }
+
+    v-on de 简写@
+    <input type="text" :value="msg" @keyup="keydownHandler">
+
+    事件修饰符
+    vue中为了方便开发人员处理一些简单的逻辑,例如阻止冒泡或者阻止浏览器默认行为等操作
+    特意提供了一系列事件修饰符完成
+    1. .stop
+    2. .prevent
+    3. .capture
+    4. .self
+    5. .once
+    6. .passive
+
+    <!-- 提交事件不再重载页面 -->
+<form v-on:submit.prevent="onSubmit"></form>
+
+<!-- 修饰符可以串联 -->
+<a v-on:click.stop.prevent="doThat"></a>
+
+<!-- 只有修饰符 -->
+<form v-on:submit.prevent></form>
+
+<!-- 添加事件监听器时使用事件捕获模式 -->
+<!-- 即元素自身触发的事件先在此处理，然后才交由内部元素进行处理 -->
+<div v-on:click.capture="doThis">...</div>
+
+<!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+<!-- 即事件不是从内部元素触发的 -->
+<div v-on:click.self="doThat">...</div>
+    
 
 
 </body>
