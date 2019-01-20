@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- v-model  双向数据绑定 -->
+    <!-- v-bind只能实现单向绑定 -->
+
+    <!-- v-for -->
+    1.迭代数组
+    item代表数组中的每一项
+    <p v-for="item in list">{{item}}</p>
+
+    index代表数组红的每一项对象的索引
+    <p v-for="(item,index) in list">{{ item }}</p>
+
+    2.迭代对象
+    对象中有多少个属性,就会循环创建多少个p
+    <p v-for="(value,key) in list">{{ key }}----{{ value }}</p>
+
+    3.迭代数字
+    迭代的数字有多大,就会循环创建多少个p
+    注意:v-for迭代数字时,num从1开始,到10结束
+    <p v-for="num in 10">{{ num }}</p>
+
+    注意事项:v-for中的key属性,在v-for循环渲染列表后,如果每个单项都有状态类型的表单元素,列入:checkbox
+    此时数据顺序发生变化后,默认不会记录每个单项的状态,会导致checkbox勾选状态出现絮乱
+
+    以后使用v-for ,都使用::key,给key绑定一个唯一标识 ,可以是number/string
+
+    v-if和v-show 
+    v-if和v-show都是用于控制元素的显示和隐藏的
+    区别在于:v-if有较高的切换性能消耗,v-show有较高的初始渲染消耗
+
+    vue中东塔板顶类样式
+    不用属性绑定,设置固定的类样式
+
+    1.绑定数组
+    <p :class="['red','active']"></p>
+    动态切换有两种方式,可以使用三元表达式来决定是否要动态添加数组元素
+    <p :class="['red',flag?'active':'']"></p>
+
+    推荐以下方法:
+    <p :class="['red',{active:flag}]"></p>
+
+
+</body>
+</html>

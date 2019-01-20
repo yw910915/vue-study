@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+    <style>
+        .red{
+            color: red;
+
+        }
+        .bgc{
+            background-color: blue;
+        }
+        .size{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div :class="['red',{'bgc':flag},'size']">{{msg}}</div>
+        <h1 :class="Obj">{{msg}}11</h1>
+
+        <button @click="dianji">点击</button>
+    </div>
+    <script>
+        new Vue({
+            el:".app",
+            data:{
+                flag:true,
+                msg:"fskffsjfskf",
+                Obj:{
+                    red:true,
+                    bgc:true,
+                    size:true
+                }
+            },
+            methods: {
+                dianji(){
+                    this.flag=!this.flag
+                }
+            },
+        })
+    
+    
+    </script>
+</body>
+</html>
