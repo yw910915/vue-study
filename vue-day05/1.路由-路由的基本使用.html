@@ -7,6 +7,29 @@
     <title>Document</title>
     <script src="./lib/vue.js"></script>
     <script src="./lib/vue-router-3.0.1.js"></script>
+    <style>
+        .router-link-active,
+        .myactive{
+            color: red;
+            font-size: 800;
+            background-color: blue;
+            font-weight: 700;
+            font-style: italic
+            
+        }
+        .v-enter,
+        .v-leave-to{
+            opacity: 0;
+            transform: translateX(150px);
+        }
+        .v-enter-active,
+        .v-leave-active{
+            transition: all 0.8s ease;
+        }
+    
+    
+    
+    </style>
 </head>
 <body>
     <div id="app">
@@ -17,7 +40,10 @@
         <router-link to="/login" tag="span">登录</router-link>
         <router-link to="/register">注册</router-link>
 
-        <router-view></router-view>
+        <transition mode="out-in">
+            <router-view></router-view>
+            
+        </transition>
     </div>
     <script>
         // 组件的模块对象
@@ -41,7 +67,8 @@
                 {path:'/login',component:login},
                 {path:'/register',component:register}
 
-            ]
+            ],
+            linkActiveClass:'myactive'
         })
         new Vue({
             el:'#app',
